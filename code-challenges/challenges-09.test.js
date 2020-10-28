@@ -280,7 +280,7 @@ const reversedString = (str) => {
   return(reverseStr.join(''));
 };
 
-/* ------------------------------------------------------------------------------------------------
+/* -------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
 
 Write a function named countNumberOfChildren that, given the array of characters, below, uses reduce to return the total number of children in the data set.
