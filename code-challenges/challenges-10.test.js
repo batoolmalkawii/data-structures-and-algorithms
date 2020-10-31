@@ -9,6 +9,10 @@ Build a simple express server. Connect a '/hello' route that sends a greeting of
 const createServer = () => {
   const express = require('express');
   const app = express();
+  var server = app.listen(3301, function () {
+    var port = server.address().port;
+    console.log('Example app listening at port', port);
+  });
   app.get('/hello', (request, response) => {
     response.send('Hi!');
   });
@@ -19,13 +23,9 @@ const createServer = () => {
     let foodArr = ['Pizza', 'Burger', 'Makhshi']
     response.send(foodArr);
   });
-
-  var server = app.listen(3301, function () {
-    var port = server.address().port;
-    console.log('Example app listening at port', port);
-  });
   return server;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -65,8 +65,8 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 const totalSum = (input) => {
   let sumArr = input.reduce(function (accumulatorArr, valueArr, idxArr) {
     let sumEl = valueArr.reduce(function (accumulatorEl, valueEl, idxEl) {
-        accumulatorEl += valueEl ;
-        return (accumulatorEl);
+      accumulatorEl += valueEl;
+      return (accumulatorEl);
     }, 0);
     accumulatorArr = accumulatorArr + sumEl;
     return accumulatorArr;
@@ -87,7 +87,19 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  let result = input.map((value, index) => {
+    let filteredArr = value.filter((value, index) => {
+      if ((typeof value === 'number') && (value % 5 === 0)) {
+        return (value);
+      }
+    })
+    console.log(filteredArr)
+    let powArr = filteredArr.map((value, index) => {
+      return (Math.pow(2, value));
+    })
+    return (powArr);
+  })
+  return (result);
 };
 
 /* ------------------------------------------------------------------------------------------------
