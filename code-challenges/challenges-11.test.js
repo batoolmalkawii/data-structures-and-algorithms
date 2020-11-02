@@ -50,7 +50,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  let pattern = /[a-z]+ +[a-z]\@\[a-z]\.\[.net]|[.com]|[.org]$/
+
+  let pattern = /^\w+\.?\w+@\w+(.net|.com|.org)\b/;
   let isValid = pattern.test(email);
   return (isValid);
 };
@@ -77,7 +78,9 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  // Solution code here...
+  let pattern = /^(\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/;
+  let isValid = pattern.test(phoneNumber);
+  return (isValid);
 };
 
 /* ------------------------------------------------------------------------------------------------
