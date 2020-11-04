@@ -20,8 +20,7 @@ const $ = createSnippetWithJQuery(`
 `);
 
 const fixTheTypo = () => {
-  const $ = cheerio.load('<ul id="fruits">...</ul>');
-  $('.pear', '#fruits').text('Pear');
+  $('.pear').text('Pear')
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,9 +33,9 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 
 const firstLetters = (arr) => {
   let first = arr.map((value, index) => {
-    return(value.charAt(0));
+    return (value.charAt(0));
   })
-  return(first);
+  return (first);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -49,7 +48,7 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
   let happy = arr.filter((value, index) => {
-    if (value.includes(':)')){
+    if (value.includes(':)')) {
       return (value);
     }
   })
@@ -65,7 +64,20 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
+  let result = []
+  arr.reduce((acc, value) => {
+    acc = ''
+    let pattern = /([0-9])/g
+    for (let i = 0; i < value.length; i++) {
+      if (pattern.test(value[i])) {
+        acc += value[i];
+        i = i - 1;
+      }
+    }
+    result.push(acc)
+    return acc;
+  }, '')
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -304,6 +316,6 @@ xdescribe('Testing challenge 11', () => {
   });
 });
 
-function createSnippetWithJQuery(html){
+function createSnippetWithJQuery(html) {
   return cheerio.load(html);
 }
