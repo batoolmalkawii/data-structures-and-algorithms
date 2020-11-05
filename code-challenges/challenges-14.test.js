@@ -149,9 +149,17 @@ Here is an example of the input:
 This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
-const sortBy = (property, arr) => {
-  // Solution code here...
-};
+const sortBy = ((property, arr) => {
+  return arr.sort((a, b) => {
+    if (property === 'price') {
+      return a.price - b.price;
+    } else {
+      if (a.name > b.name) {return 1;}
+      if (a.name === b.name) { return 0;}
+      else { return -1;}
+    }
+  });
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
